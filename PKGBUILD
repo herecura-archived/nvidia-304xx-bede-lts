@@ -4,12 +4,12 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 _pkgname=nvidia
-pkgname="$_pkgname-304xx-bede"
+pkgname="$_pkgname-304xx-bede-lts"
 pkgver=304.132
 _extramodules=4.4-BEDE-LTS-external
 _current_linux_version=4.4.28
 _next_linux_version=4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA 304xx drivers for linux-bede"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
