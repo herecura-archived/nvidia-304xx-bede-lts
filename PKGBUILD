@@ -5,11 +5,11 @@
 
 _pkgname=nvidia
 pkgname="$_pkgname-304xx-bede"
-pkgver=304.131
+pkgver=304.132
 _extramodules=4.4-BEDE-LTS-external
-_current_linux_version=4.4.26
+_current_linux_version=4.4.28
 _next_linux_version=4.5
-pkgrel=4
+pkgrel=1
 pkgdesc="NVIDIA 304xx drivers for linux-bede"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -25,14 +25,13 @@ conflicts=('nvidia-bede-lts')
 license=('custom')
 options=('!strip')
 
-source=('disable-mtrr.patch' 'linux-4.6.patch')
+source=('disable-mtrr.patch')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
 
-sha256sums=('cbaa0c4e4f30d993958c079a22e0346970f99d4fda9d12379777bb16ab3306c9'
-            '7133fb270c138ab697271245f3c05654f3f409e98d9b67b01d513403f7fcc5db')
-sha256sums_i686=('d2554bb6f7867e7762d0ecedcac5bde7de0634e43b952bf466323ea8b4032da8')
-sha256sums_x86_64=('2f6e82c79ed4d1ac3d42b2c0f71d4fbdd9293db801de396e7e2cc3fdcafaf83e')
+sha256sums=('cbaa0c4e4f30d993958c079a22e0346970f99d4fda9d12379777bb16ab3306c9')
+sha256sums_i686=('d460f6ab63cc8c1f9fb89a344ad0f3ee1a90e7078b4edba78d86433e66bfd927')
+sha256sums_x86_64=('3d7c18eef3044890536b50acab76977112ea5134425b75bba10af37091879ab8')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
@@ -46,8 +45,6 @@ prepare() {
     (
         cd kernel; patch -p1 -i "$srcdir/disable-mtrr.patch"
     )
-
-    patch -p1 -i "$srcdir/linux-4.6.patch"
 }
 
 build() {
